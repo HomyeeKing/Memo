@@ -1,6 +1,9 @@
 .DS_Store
-node_modules
+/node_modules
+/server/node_modules
 /dist
+/Memo
+*.config.js
 
 # local env files
 .env.local
