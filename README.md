@@ -1,4 +1,4 @@
-# memrise
+# memo
 
 ## Project setup
 ```
