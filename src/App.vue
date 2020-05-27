@@ -42,7 +42,7 @@
     </v-overlay>
     <v-app-bar app color="primary">
       <i
-        
+        aria-hidden="true"
         @click="tv = !tv"
         style="margin-right:20px"
         class="v-icon notranslate mdi mdi-television-box theme--dark"
@@ -50,15 +50,15 @@
       <v-toolbar-title class="font-weight-black secondary--text">Memo</v-toolbar-title>
       <div class="spacer"></div>
 
-      <i
-       
+      <i     
+      aria-hidden="true" 
         style="margin-right:20px"
-        class="v-icon notranslate mdi mdi-cog theme--dark"
+        class="v-icon notranslate mdi mdi-bell  theme--dark"
         @click.stop="showP = !showP"
       ></i>
 
-      <i
-       
+      <i     
+      aria-hidden="true"  
         @click="changeTheme"
         class="v-icon notranslate mdi mdi-invert-colors theme--dark"
       ></i>
