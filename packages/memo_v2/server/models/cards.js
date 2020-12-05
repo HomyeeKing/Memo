@@ -6,4 +6,4 @@ const schema = new mongoose.Schema({
     },
     cover: Buffer,
 });
-module.exports = Card = mongoose.model('cards', schema);
+module.exports = mongoose.model('cards', schema);

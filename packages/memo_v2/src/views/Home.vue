@@ -6,7 +6,7 @@
                 v-for="card in cardLists"
                 :key="card.cardName"
                 :style="card.cover ? `background:${card.cover.data}` : ''"
-                @click="toVocabulary(cardName)"
+                @click="toVocabulary(card.cardName)"
             >
                 <span class="porn">{{ card.cardName }}</span>
                 <span class="hub">词汇</span>
@@ -41,6 +41,8 @@ export default {
                 this.$router.push('/kaoyan');
             } else if (tab === '计算机') {
                 this.$router.push('/computerEng');
+            } else {
+                this.$router.push('/theZone');
             }
         },
     },

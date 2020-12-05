@@ -1,15 +1,17 @@
 var express = require('express');
 var router = express.Router();
 const formidable = require('formidable');
+
+const AdmZip = require('adm-zip');
 const computer = require('../models/computer');
 const kaoyan = require('../models/kaoyan');
 const Card = require('../models/cards');
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
     res.send('connect');
 });
 
-router.get('/getWords', async (req, res, next) => {
+router.get('/getWords', async (req, res) => {
     let count, Voca;
     let { currentPage, range, which } = req.query;
     currentPage = parseInt(currentPage);
@@ -58,7 +60,7 @@ router.post('/createCard', async (req, res) => {
             cover: cover ? cover : null,
         });
         try {
-            const inserRes = await newCard.save();
+            await newCard.save();
             res.json({ code: 200, msg: '创建成功！' });
         } catch (error) {
             console.log(error.message);
@@ -80,5 +82,34 @@ router.get('/getCards', async (req, res) => {
             msg: '获取失败！',
         });
     }
+});
+
+// 接收上传的单词文件并解析
+router.post('/upload', (req, res) => {
+    const form = formidable({ multiples: true });
+    const formatData = dataArr => {
+        return dataArr.map(str => {
+            const words = str.replace(/<w:t>/g, '').replace(/<\/w:t>/, '');
+            const [word, translation] = words.split(' ');
+            return { word, translation };
+        });
+    };
+    form.parse(req, (err, _, files) => {
+        if (err) {
+            return res.json({
+                code: 500,
+                msg: '文件解析错误',
+            });
+        }
+
+        const doc = files['doc'];
+        const zip = new AdmZip(doc.path);
+
+        zip.extractAllTo('./output/2', true);
+        let contentXml = zip.readAsText('word/document.xml');
+
+        let matchWT = contentXml.match(/(<w:t>.*?<\/w:t>)/gi);
+        res.send(formatData(matchWT));
+    });
 });
 module.exports = router;

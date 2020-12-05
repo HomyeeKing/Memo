@@ -27,6 +27,11 @@ const routes = [
         component: () => import('@/views/createCards'),
     },
     {
+        path: '/theZone',
+        name: 'theZone',
+        component: () => import('@/views/theZone'),
+    },
+    {
         path: '/learn/:currentPage/:range/:which',
         name: 'learnWord',
         component: () => import('@/views/learn'),

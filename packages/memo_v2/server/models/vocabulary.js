@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const schema = new Schema({
+    owner: {
+        type: String,
+        ref: 'cards',
+    },
     word: {
         type: String,
     },
