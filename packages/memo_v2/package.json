@@ -4,10 +4,10 @@
     "private": true,
     "scripts": {
         "serve": "vue-cli-service serve",
-        "build": "vue-cli-service build",
+        "build": "cross-env NODE_ENV=production vue-cli-service build",
         "lint": "vue-cli-service lint",
         "server": "npm start --prefix server",
-        "start": "concurrently \"npm run serve\" \" npm run server\""
+        "start": "cross-env NODE_ENV=development concurrently \"npm run serve\" \" npm run server\""
     },
     "dependencies": {
         "axios": "^0.19.2",

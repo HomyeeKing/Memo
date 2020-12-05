@@ -9,9 +9,14 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+const mongoURL =
+    process.env.NODE_ENV === 'development'
+        ? 'mongodb://localhost:27017/vocabulary'
+        : 'mongodb://121.36.32.150:27017/vocabulary';
 //连接数据库
 mongoose
-    .connect('mongodb://localhost:27017/vocabulary', {
+    .connect(mongoURL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })

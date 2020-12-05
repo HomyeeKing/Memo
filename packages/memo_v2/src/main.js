@@ -13,10 +13,13 @@ import 'element-ui/lib/theme-chalk/index.css';
 import { Pagination } from 'element-ui';
 
 Vue.use(Pagination);
-
+const baseURL =
+    process.env.NODE_ENV === 'development'
+        ? 'http://localhost:3000'
+        : 'http://121.36.32.150:5003';
 // axios
 const instance = axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL,
 });
 
 Vue.config.productionTip = false;
