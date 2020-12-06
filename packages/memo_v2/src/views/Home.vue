@@ -42,7 +42,7 @@ export default {
             } else if (tab === '计算机') {
                 this.$router.push('/computerEng');
             } else {
-                this.$router.push('/theZone');
+                this.$router.push(`/${tab}/theZone`);
             }
         },
     },

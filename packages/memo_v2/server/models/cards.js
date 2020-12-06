@@ -1,9 +1,10 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 const schema = new mongoose.Schema({
-    cardName: {
-        type: String,
-        required: true,
-    },
-    cover: Buffer,
-});
-module.exports = mongoose.model('cards', schema);
+	cardName: {
+		type: String,
+		required: true
+	},
+	cover: Buffer,
+	words: Array
+})
+module.exports = mongoose.model('cards', schema)

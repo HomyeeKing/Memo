@@ -5,12 +5,13 @@
             <v-text-field
                 v-model="model.cardName"
                 label="模块名称"
+                placeholder="自动添加定语：词汇，如输入homy，则最终显示homy词汇"
             ></v-text-field>
             <v-file-input
                 v-model="model.imgFile"
                 accept="image/*"
                 label="封面上传"
-                placeholder="不上传则默认pb风格"
+                placeholder="不上传 默认pb风格"
             ></v-file-input>
             <v-btn class="mr-4" @click="submit"> submit </v-btn>
             <v-btn @click="clear"> clear </v-btn>
@@ -25,7 +26,7 @@ export default {
     data: () => ({
         model: {
             cardName: '',
-            imgFile: '',
+            imgFile: null,
             cover: '',
         },
     }),
@@ -35,8 +36,7 @@ export default {
             if (this.model.cardName === '') {
                 return alert('请输入模块名称');
             } else {
-                console.log(this.model.imgFile);
-                if (this.model.imgFile !== '') {
+                if (this.model.imgFile) {
                     const fileReader = new FileReader();
                     fileReader.readAsDataURL(this.model.imgFile);
                     fileReader.onload = async (e) => {
