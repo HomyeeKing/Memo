@@ -1,33 +1,29 @@
-import Vue from 'vue';
-import App from './App.vue';
-import router from './router';
-import store from './store';
-import '@/css/main.styl';
-import '@/css/reset.styl';
-import axios from 'axios';
-
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import '@/css/main.styl'
+import '@/css/reset.styl'
+import axios from 'axios'
+import { baseURL } from '@/utils/req.js'
 // UI
-import vuetify from './plugins/vuetify';
+import vuetify from './plugins/vuetify'
 
-import 'element-ui/lib/theme-chalk/index.css';
-import { Pagination } from 'element-ui';
-
-Vue.use(Pagination);
-const baseURL =
-    process.env.NODE_ENV === 'development'
-        ? 'http://localhost:3000'
-        : 'http://121.36.32.150:5003';
+import 'element-ui/lib/theme-chalk/index.css'
+import { Pagination } from 'element-ui'
+console.log(process.env.BASE_URL)
+Vue.use(Pagination)
 // axios
 const instance = axios.create({
-    baseURL,
-});
+	baseURL
+})
 
-Vue.config.productionTip = false;
-Vue.prototype.$http = instance;
+Vue.config.productionTip = false
+Vue.prototype.$http = instance
 
 new Vue({
-    router,
-    store,
-    vuetify,
-    render: h => h(App),
-}).$mount('#app');
+	router,
+	store,
+	vuetify,
+	render: (h) => h(App)
+}).$mount('#app')
