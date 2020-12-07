@@ -34,7 +34,6 @@ export default {
         async getCards() {
             const { data } = await this.$http.get('/getCards');
             this.cardLists = data.data;
-            console.log(this.cardLists);
         },
         toVocabulary(tab) {
             if (tab === '考研') {

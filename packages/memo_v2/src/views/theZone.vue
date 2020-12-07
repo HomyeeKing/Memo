@@ -46,6 +46,9 @@ export default {
             this.textFile = null;
         },
         async upload() {
+            if (!this.textFile) {
+                return alert('请上传文件');
+            }
             const formData = new FormData();
             formData.append('doc', this.textFile);
             formData.append('owner', this.owner);
