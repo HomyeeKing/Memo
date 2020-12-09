@@ -10,7 +10,7 @@
         "lint": "vue-cli-service lint",
         "server": "npm start --prefix server",
         "start": "cross-env NODE_ENV=development concurrently \"npm run serve\" \" npm run server\"",
-        "transfer":"sh transfer.sh"
+        "transfer": "sh transfer.sh"
     },
     "dependencies": {
         "axios": "^0.19.2",
