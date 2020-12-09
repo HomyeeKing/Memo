@@ -5,32 +5,43 @@ import computerEng from '../views/computerEng.vue'
 
 Vue.use(VueRouter)
 
-const routes = [{
-    path: '/',
-    name: 'Home',
-    component: Home
-}, {
-    path: "/kaoyan",
-    name: 'kaoyan',
-    component: () =>
-        import ("@/views/kaoyan")
-
-}, {
-    path: "/computerEng",
-    name: 'computerEng',
-    component: computerEng
-
-}, {
-    path: "/learn/:currentPage/:range/:which",
-    name: "learnWord",
-    component: () =>
-        import ("@/views/learn")
-}]
+const routes = [
+	{
+		path: '/',
+		name: 'Home',
+		component: Home
+	},
+	{
+		path: '/kaoyan',
+		name: 'kaoyan',
+		component: () => import('@/views/kaoyan')
+	},
+	{
+		path: '/computerEng',
+		name: 'computerEng',
+		component: computerEng
+	},
+	{
+		path: '/createCards',
+		name: 'createCards',
+		component: () => import('@/views/createCards')
+	},
+	{
+		path: '/:owner/theZone',
+		name: 'theZone',
+		component: () => import('@/views/theZone')
+	},
+	{
+		path: '/learn/:currentPage/:range/:which',
+		name: 'learnWord',
+		component: () => import('@/views/learn')
+	}
+]
 
 const router = new VueRouter({
-    mode: 'history',
-    base: process.env.BASE_URL,
-    routes
+	mode: 'history',
+	base: process.env.BASE_URL,
+	routes
 })
 
 export default router
